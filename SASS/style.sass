@@ -1,0 +1,302 @@
+@use 'color'
+
+*
+  text-decoration: none
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  font-family: 'Poppins', sans-serif
+  scroll-behavior: smooth
+
+@mixin flex-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+@mixin input
+  width: 300px
+  margin: 1rem 0
+  border: 2px solid color.$clr-primary
+  padding: .8rem 1rem
+  border-radius: 30px
+
+header
+  @include flex-center
+  height: 4rem
+  justify-content: space-around
+
+.carrinho
+  width: 24px
+
+ul
+  display: flex
+  & li
+    list-style: none
+    margin: 0 2rem
+  & a
+    text-decoration: none
+    color: color.$clr-primary
+
+main
+  margin-top: 3em
+  width: 100vw
+  height: 90vh
+
+  & .background
+    filter: brightness(.6)
+    position: absolute
+    overflow-x: hidden
+    top: 0
+    left: 0
+    width: 100vw
+    z-index: -1
+    & img
+      min-width: 1000px
+      width: 100vw
+
+  & .container-main
+    @include flex-center
+    flex-direction: column
+    margin: auto
+    text-align: center
+    width: 60%
+    color: color.$clr-primary
+    & h1
+      font-size: 3rem
+      font-weight: 600
+    & p
+      max-width: 60%
+      margin: 2rem 0
+      font-size: .8rem
+  & input
+    @include input
+    background: #cccccc69
+    background-repeat: no-repeat
+    background-position-x: calc(95%)
+    background-position-y: center
+    background-size: 24px
+    color: #ccc
+    background-image: url('../assets/search.svg')
+
+section
+  width: 100vw
+  & h2
+    margin: 2rem
+    font-size: 2.2rem
+
+  & .container-block
+    @include flex-center
+    padding: .5rem
+    justify-content: center
+    color: color.$clr-secundary
+    gap: 1.5rem
+    flex-wrap: wrap
+    & .block
+      min-width: 22ch
+      margin: 2rem 0
+      padding: 1.5rem
+      min-height: 20rem
+      border-radius: 5px
+      border: 2px solid color.$clr-primary
+      max-width: 20%
+      transition: 300ms ease-in-out
+      &:hover
+        box-shadow: 2px 2px 10px color.$clr-tertiary
+      & h3
+        font-size: 18px
+      & p
+        font-size: 1rem
+        line-height: 200%
+      & a
+        text-decoration: none
+        color: color.$clr-tertiary
+      & img
+        width: 40px
+
+.categories
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  gap: 2rem
+  width: 100vw
+  & input
+    @include input
+    border: 2px solid color.$clr-tertiary
+    color: color.$clr-tertiary
+    background: none
+
+  & .categories-text
+    color: color.$clr-secundary
+    width: 38%
+    padding: 2rem
+    & h2
+      margin: 1rem 0
+      font-size: 2rem
+      text-align: left
+    & p
+      margin: 1rem 0
+
+  & .img
+    width: 55vw
+    & img
+      width: 100%
+      height: auto
+      border-radius: 50px 50px 0 50px
+      padding: 2rem
+  & .select
+    & h3
+      transition: 300ms ease-in-out
+      cursor: pointer
+      margin: 1.5rem 0
+    &:hover
+      color: color.$clr-tertiary
+    & p
+      position: absolute
+      visibility: hidden
+  & .active
+    & p
+      position: relative
+      visibility: visible
+  & a
+    text-decoration: none
+    color: color.$clr-secundary
+    transition: 300ms ease-in-out
+    &:hover
+      color: color.$clr-tertiary
+
+.feature
+  color: color.$clr-secundary
+
+.featured
+  display: flex
+  justify-content: space-evenly
+  flex-wrap: wrap
+  columns: 2
+  & .block
+    width: fit-content
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: space-around
+    & .prod
+      width: 70%
+      height: auto
+
+.testimonials
+  background-color: color.$clr-lightgray
+  & h2
+    color: color.$clr-secundary
+    text-align: center
+  & .comment
+    @include flex-center
+
+  & .comments
+    @include flex-center
+    flex-direction: column
+    gap: 2rem
+    width: 100vw
+    max-height: 25rem
+    & .block
+      padding: 3rem
+  & .profile
+    display: flex
+    padding: 2rem 0
+    & img
+      width: 3rem
+      height: 3rem
+      border-radius: 50%
+    & .cargo
+      color: color.$clr-secundary
+      margin-left: 1rem
+
+.profile p
+  font-size: 13px
+
+footer
+  background: linear-gradient(to right, #1d1d1d 20%,#4B4B4B 20%)
+.mid-footer
+  display: flex
+  height: 20rem
+  color: color.$clr-primary
+  & .logo
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 20vw
+    & img
+      width: 170px
+  & ul
+    display: flex
+    width: 80vw
+    justify-content: space-around
+    & li
+      margin-top: 1rem
+      display: flex
+      flex-direction: column
+    & h2
+      color: color.$clr-tertiary
+      font-size: 18px
+      font-weight: 300
+    & a
+      margin-top: 1rem
+
+.signature
+  text-align: center
+  color: color.$clr-primary
+  padding: .5rem
+  & a
+    text-decoration: none
+    color: color.$clr-lightgray
+  & span
+    font-size: 1.5rem
+    font-weight: 500
+    margin-left: 0.5rem
+    margin-right: 0.2rem
+    color: greenyellow
+    border: 1px solid greenyellow
+
+@media (max-width: 1000px)
+  .categories
+    & .categories-text
+      width: 80vw
+    & .img
+      display: flex
+      justify-content: center
+      width: 100%
+      img
+        width: 80vw
+
+  footer
+    background: linear-gradient(to bottom, #1d1d1d 30%,#4B4B4B 30%)
+  .mid-footer
+    display: grid
+    margin: 50%
+    height: 30rem
+    place-content: center
+    color: color.$clr-primary
+    & .logo
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 100vw
+
+    & ul
+      display: flex
+      width: 80vw
+      justify-content: space-around
+    & li
+      margin-top: 1rem
+      display: flex
+      flex-direction: column
+    & h2
+      color: color.$clr-tertiary
+      font-size: 18px
+      font-weight: 300
+    & a
+      margin-top: 1rem
+
+@media (max-width: 950px)
+  .comment
+    flex-wrap: wrap
+    & comments
+      width: 80vw
