@@ -19,16 +19,21 @@ header {
   width: 24px;
 }
 
-ul {
+.menu {
   display: flex;
 }
-ul li {
+.menu li {
   list-style: none;
   margin: 0 2rem;
 }
-ul a {
+.menu a {
   text-decoration: none;
   color: #ececec;
+}
+
+.modal-menu {
+  position: absolute;
+  visibility: hidden;
 }
 
 main {
@@ -39,7 +44,7 @@ main {
 main .background {
   filter: brightness(0.6);
   position: absolute;
-  overflow-x: hidden;
+  overflow: clip;
   top: 0;
   left: 0;
   width: 100vw;
@@ -290,6 +295,8 @@ footer {
   font-weight: 300;
 }
 .mid-footer ul a {
+  text-decoration: none;
+  color: #ececec;
   margin-top: 1rem;
 }
 
@@ -312,8 +319,150 @@ footer {
 }
 
 @media (max-width: 1000px) {
+  header {
+    justify-content: space-between;
+    margin: 0 10px;
+  }
+
+  nav .hamburguer {
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 3px;
+    cursor: pointer;
+    z-index: 30;
+    right: 40px;
+    top: 28px;
+    background: #ececec;
+  }
+  nav .hamburguer::before {
+    z-index: 30;
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 3px;
+    cursor: pointer;
+    z-index: 30;
+    right: 40px;
+    top: 28px;
+    background: #ececec;
+    top: -8px;
+    right: 0;
+  }
+  nav .hamburguer::after {
+    z-index: 30;
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 3px;
+    cursor: pointer;
+    z-index: 30;
+    right: 40px;
+    top: 28px;
+    background: #ececec;
+    top: 8px;
+    right: 0;
+  }
+  nav .animate {
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 3px;
+    cursor: pointer;
+    z-index: 30;
+    right: 40px;
+    top: 28px;
+    background: #ececec;
+  }
+  nav .animate::before {
+    z-index: 30;
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 3px;
+    cursor: pointer;
+    z-index: 30;
+    right: 40px;
+    top: 28px;
+    background: #ececec;
+    top: -8px;
+    right: 0;
+    animation: animateC 700ms forwards;
+  }
+  nav .animate::after {
+    z-index: 30;
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 3px;
+    cursor: pointer;
+    z-index: 30;
+    right: 40px;
+    top: 28px;
+    background: #ececec;
+    top: 8px;
+    right: 0;
+    animation: animateCC 700ms forwards;
+  }
+  nav .menu {
+    position: absolute;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    overflow-wrap: anywhere;
+    overflow: clip;
+  }
+
+  #modal {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    right: -40px;
+    top: -28px;
+    background: #F79489;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  #modal .modal-menu {
+    visibility: visible;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+    font-size: 2rem;
+    line-height: 300%;
+  }
+  #modal .modal-menu li {
+    list-style: none;
+  }
+  #modal .modal-menu li a {
+    text-decoration: none;
+    color: #FAF5F2;
+  }
+
+  @keyframes animateC {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(45deg);
+      top: 0;
+    }
+  }
+  @keyframes animateCC {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+  }
   main {
-    height: 60vh;
+    height: 70vh;
   }
   main .container-main {
     width: 90%;
@@ -368,9 +517,9 @@ footer {
     margin: 0 auto;
   }
   .mid-footer li {
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
   }
   .mid-footer h2 {
     color: #F79489;

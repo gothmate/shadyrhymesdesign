@@ -8,6 +8,17 @@
   font-family: 'Poppins', sans-serif
   scroll-behavior: smooth
 
+@mixin hamburguer
+  position: absolute
+  content: ''
+  width: 24px
+  height: 3px
+  cursor: pointer
+  z-index: 30
+  right: 40px
+  top: 28px
+  background: color.$clr-primary
+
 @mixin flex-center
   display: flex
   align-items: center
@@ -28,14 +39,19 @@ header
 .carrinho
   width: 24px
 
-ul
+.menu
   display: flex
+
   & li
     list-style: none
     margin: 0 2rem
   & a
     text-decoration: none
     color: color.$clr-primary
+
+.modal-menu
+  position: absolute
+  visibility: hidden
 
 main
   margin-top: 3em
@@ -45,7 +61,7 @@ main
   & .background
     filter: brightness(.6)
     position: absolute
-    overflow-x: hidden
+    overflow: clip
     top: 0
     left: 0
     width: 100vw
@@ -238,6 +254,8 @@ footer
       font-size: 18px
       font-weight: 300
     & a
+      text-decoration: none
+      color: color.$clr-primary
       margin-top: 1rem
 
 .signature
@@ -256,11 +274,89 @@ footer
     border: 1px solid greenyellow
 
 @media (max-width: 1000px)
-  main
-    height: 60vh
-    & .background
-      & img
+  header
+    justify-content: space-between
+    margin: 0 10px
+  nav
+    & .hamburguer
+      @include hamburguer
 
+      &::before
+        z-index: 30
+        @include hamburguer
+        top: -8px
+        right: 0
+      &::after
+        z-index: 30
+        @include hamburguer
+        top: 8px
+        right: 0
+
+    & .animate
+      @include hamburguer
+      &::before
+        z-index: 30
+        @include hamburguer
+        top: -8px
+        right: 0
+        animation: animateC 700ms forwards
+      &::after
+        z-index: 30
+        @include hamburguer
+        top: 8px
+        right: 0
+        animation: animateCC 700ms forwards
+
+    & .menu
+      position: absolute
+      visibility: hidden
+      top: 0
+      left: 0
+      overflow-wrap: anywhere
+      overflow: clip
+
+  #modal
+    position: absolute
+    width: 100vw
+    height: 100vh
+    right: -40px
+    top: -28px
+    background: color.$clr-tertiary
+    opacity: 0
+    overflow: hidden
+    pointer-events: none
+    & .modal-menu
+      visibility: visible
+      position: relative
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: space-evenly
+      height: 100vh
+      font-size: 2rem
+      line-height: 300%
+      & li
+        list-style: none
+        & a
+          text-decoration: none
+          color: color.$clr-lightgray
+
+  @keyframes animateC
+    0%
+      transform: rotate(0deg)
+    100%
+      transform: rotate(45deg)
+      top: 0
+
+  @keyframes animateCC
+    0%
+      transform: rotate(0deg)
+    100%
+      transform: rotate(-45deg)
+      top: 0
+
+  main
+    height: 70vh
     & .container-main
       width: 90%
       & h1
@@ -304,9 +400,9 @@ footer
       width: 100vw
       margin: 0 auto
     & li
-      margin-top: 1rem
       display: flex
       flex-direction: column
+      margin-top: 1rem
     & h2
       color: color.$clr-tertiary
       font-size: 18px
