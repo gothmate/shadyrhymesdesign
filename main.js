@@ -1,7 +1,7 @@
 const selection = document.querySelectorAll('.select')
 const active = document.querySelector('.active')
 const modal = document.getElementById('modal')
-const hamburguer = document.querySelector('.hamburguer')
+const hamburguer = document.querySelector('#ham')
 const animate = document.querySelector('.animate')
 
 selection.forEach(el => {
@@ -22,15 +22,16 @@ function selectItem(el) {
   }
 }
 
-hamburguer.addEventListener('click', () => {
-  hamburguer.classList.add('animate')
-  hamburguer.classList.remove('hamburguer')
-  modal.style.opacity = 1
+hamburguer.addEventListener('click', e => {
+  if (e.target.classList.value == 'hamburguer') {
+    console.log(e.target)
+    hamburguer.classList.add('animate')
+    hamburguer.classList.remove('hamburguer')
+    modal.style.opacity = 1
+  } else {
+    console.log(e.target)
+    hamburguer.classList.add('hamburguer')
+    hamburguer.classList.remove('animate')
+    modal.style.opacity = 0
+  }
 })
-
-if (animate) {
-  modal.addEventListener('click', () => {
-    animate.classList.add('hamburguer')
-    animate.classList.remove('animate')
-  })
-}
